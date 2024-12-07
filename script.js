@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sign out function
     signOutButton.addEventListener('click', function() {
         localStorage.removeItem('username'); // Clear the username from local storage
-        window.location.href = 'https://codepen.io/KIDS-LEARNING-FOR-EVRYONE/pen/KwPVaQg'; // Redirect to registration page
+        window.location.href = 'https://wafflenugget.github.io/CoolKidZ-Homepage/'; // Redirect to CoolKidZ homepage
     });
 
     // Add video functionality
