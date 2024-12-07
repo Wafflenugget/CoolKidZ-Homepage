@@ -3,139 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoolKidZ Homepage</title>
-    <style>
-        /* CSS Section */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJ0fGVufDB8fDB8fHww') no-repeat center center fixed;
-            background-size: cover;
-            color: #333;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(76, 175, 80, 0.8); /* Green with transparency */
-            color: white;
-            padding: 1rem 2rem;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-        header div button {
-            margin-left: 1rem;
-            font-size: 1rem;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-        }
-        .video-container {
-            margin: 2rem auto;
-            max-width: 560px;
-        }
-        iframe {
-            width: 100%;
-            height: 315px;
-        }
-        #add-video-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            z-index: 1000;
-        }
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-    </style>
+    <title>CoolKidZ Registration</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>CoolKidZ</h1>
-        <div>
-            <button id="sign-out-btn">Sign Out</button>
-            <button id="add-video-btn" class="green-button">Add Video</button>
-        </div>
-    </header>
     <div class="container">
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/p3NXd3DhH08" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+        <h1>Register for CoolKidZ</h1>
+        <div class="register-box">
+            <form id="registrationForm">
+                <label for="username">Username (6-9 letters):</label>
+                <input type="text" id="username" required minlength="6" maxlength="9" placeholder="Enter your username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required placeholder="Enter your password">
+                <button type="submit">Register</button>
+            </form>
+            <div id="message"></div>
         </div>
     </div>
-
-    <div class="modal-overlay"></div>
-    <div id="add-video-modal">
-        <h2>Add Your Video</h2>
-        <form id="video-form">
-            <label for="video-file">Choose a file:</label>
-            <input type="file" id="video-file" accept="video/*"><br><br>
-            <button type="button" id="confirm-add-btn" class="green-button">Add</button>
-            <button type="button" id="exit-add-btn">Exit</button>
-        </form>
-    </div>
-
-    <script>
-        // JS Section
-        document.addEventListener('DOMContentLoaded', function () {
-            const addVideoBtn = document.getElementById('add-video-btn');
-            const signOutBtn = document.getElementById('sign-out-btn');
-            const modalOverlay = document.querySelector('.modal-overlay');
-            const videoModal = document.getElementById('add-video-modal');
-            const videoFileInput = document.getElementById('video-file');
-            const confirmAddBtn = document.getElementById('confirm-add-btn');
-            const exitAddBtn = document.getElementById('exit-add-btn');
-
-            // Handle Add Video Modal
-            addVideoBtn.addEventListener('click', () => {
-                modalOverlay.style.display = 'block';
-                videoModal.style.display = 'block';
-            });
-
-            exitAddBtn.addEventListener('click', () => {
-                modalOverlay.style.display = 'none';
-                videoModal.style.display = 'none';
-            });
-
-            confirmAddBtn.addEventListener('click', () => {
-                if (!videoFileInput.files.length) {
-                    alert('Invalid! Please choose a video or exit.');
-                } else {
-                    alert('Video added successfully!');
-                    modalOverlay.style.display = 'none';
-                    videoModal.style.display = 'none';
-                }
-            });
-
-            // Handle Sign Out
-            signOutBtn.addEventListener('click', () => {
-                alert('Signing you out...');
-                localStorage.removeItem('username'); // Remove user data
-                window.location.href = 'https://wafflenugget.github.io/CoolKidZ-Homepage/'; // Redirect to registration
-            });
-        });
-    </script>
 </body>
 </html>
